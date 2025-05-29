@@ -7,15 +7,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class SugeridorAtuendos {
+public class SugeridorPrendas {
   private final ServicioMeteorologico servicioClima;
 
-  public SugeridorAtuendos(ServicioMeteorologico servicioClima) {
+  public SugeridorPrendas(ServicioMeteorologico servicioClima) {
     this.servicioClima = servicioClima;
   }
 
-  public List<Prenda> sugerir(String ciudad, List<Prenda> prendasDisponibles) {
-    double temperatura = servicioClima.obtenerTemperatura(ciudad);
+  public List<Prenda> sugerir(List<Prenda> prendasDisponibles) {
+    double temperatura = servicioClima.obtenerTemperaturaBuenosAires();
     return prendasDisponibles.stream()
         .filter(p -> p.esAptaPara(temperatura))
         .collect(Collectors.toList());
